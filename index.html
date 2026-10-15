@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mercado Baloque</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CORES: troque aqui e o site inteiro muda ===== */
+:root{
+  --fundo:#EEF5FC; --papel:#FFFFFF; --texto:#0F2038; --suave:#53657D;
+  --azul-escuro:#0B3C7A; --azul-escuro-texto:#FFFFFF; --azul-claro:#9CCFF7; --linha:#CFDFF0;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --fundo:#0C1626; --papel:#14243B; --texto:#E8F1FB; --suave:#9FB3CC;
+    --azul-escuro:#4A9BE8; --azul-escuro-texto:#071426; --linha:#243A58; color-scheme: dark;
+  }
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fundo);color:var(--texto);font-family:"Nunito Sans",system-ui,sans-serif;line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+.caixa{max-width:960px;margin:0 auto;padding:0 20px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--azul-claro);outline-offset:2px}
+
+/* ===== MENU ===== */
+header{background:var(--azul-escuro);color:var(--azul-escuro-texto)}
+header .caixa{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-top:14px;padding-bottom:14px}
+.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;text-decoration:none}
+nav{display:flex;flex-wrap:wrap;gap:6px 20px}
+nav a{text-decoration:none;font-weight:700}
+nav a:hover{text-decoration:underline}
+
+/* ===== TOPO (HERO) ===== */
+.hero{padding:56px 0 40px}
+.hero h1{font-size:clamp(2.2rem,7vw,3.8rem);font-weight:800;max-width:14ch}
+.hero p{max-width:46ch;color:var(--suave);margin:16px 0 24px}
+.botao{display:inline-block;background:var(--azul-escuro);color:var(--azul-escuro-texto);padding:12px 22px;border-radius:6px;font-weight:700;text-decoration:none;border:0;font:inherit;font-weight:700;cursor:pointer}
+.botao:hover{filter:brightness(1.1)}
+
+/* ===== OFERTAS (etiquetas de preço) ===== */
+section{padding:40px 0}
+section h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:6px}
+.sub{color:var(--suave);margin:0 0 24px}
+.ofertas{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;padding:0;margin:0;list-style:none}
+.etiqueta{background:var(--azul-claro);color:#0F2038;padding:16px 16px 14px;border-radius:4px 4px 4px 22px;display:flex;flex-direction:column;gap:2px;border-left:6px solid var(--azul-escuro)}
+.etiqueta .nome{font-weight:700}
+.etiqueta .preco{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:2rem;line-height:1.1}
+.etiqueta .un{font-size:.9rem}
+.aviso{font-size:.9rem;color:var(--suave);margin-top:16px}
+
+/* ===== SOBRE E CONTATO ===== */
+.painel{background:var(--papel);border:1px solid var(--linha);border-radius:8px;padding:24px}
+.dois{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.horarios{margin:0;padding:0;list-style:none}
+.horarios li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--linha);padding:6px 0}
+label{display:block;font-weight:700;margin:12px 0 4px}
+input,textarea{width:100%;font:inherit;color:var(--texto);background:var(--fundo);border:1px solid var(--linha);border-radius:6px;padding:10px}
+footer{border-top:1px solid var(--linha);padding:24px 0 32px;color:var(--suave);font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="caixa">
+    <a class="logo" href="#topo">Mercado Baloque</a>
+    <nav>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+  <div class="caixa hero">
+    <!-- DICA: troque este texto pelo slogan do seu mercado -->
+    <h1>Tudo fresco, perto de você.</h1>
+    <p>Hortifrúti, açougue, padaria e tudo para o dia a dia da sua casa, com preço justo e atendimento de vizinho.</p>
+    <a class="botao" href="#ofertas">Ver ofertas da semana</a>
+  </div>
+
+  <section id="ofertas">
+    <div class="caixa">
+      <h2>Ofertas da semana</h2>
+      <p class="sub">Válidas até acabar o estoque.</p>
+      <!-- PARA ADICIONAR UMA OFERTA: copie um bloco <li> inteiro, cole abaixo e troque nome, preço e unidade -->
+      <ul class="ofertas">
+        <li class="etiqueta"><span class="nome">Tomate</span><span class="preco">R$ 5,99</span><span class="un">o quilo</span></li>
+        <li class="etiqueta"><span class="nome">Arroz tipo 1</span><span class="preco">R$ 24,90</span><span class="un">pacote de 5 kg</span></li>
+        <li class="etiqueta"><span class="nome">Pão francês</span><span class="preco">R$ 14,90</span><span class="un">o quilo</span></li>
+        <li class="etiqueta"><span class="nome">Café torrado</span><span class="preco">R$ 17,50</span><span class="un">pacote de 500 g</span></li>
+      </ul>
+      <p class="aviso">Preços de exemplo. Troque pelos valores reais antes de divulgar.</p>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="caixa dois">
+      <div>
+        <h2>Sobre nós</h2>
+        <p>Somos um mercado de bairro que acredita em atendimento próximo. Aqui você escreve a história do seu mercado: desde quando existe, o que tem de especial e o que os clientes mais elogiam.</p>
+      </div>
+      <div class="painel">
+        <h3>Horário de funcionamento</h3>
+        <ul class="horarios">
+          <li><span>Segunda a sábado</span><span>7h às 20h</span></li>
+          <li><span>Domingo</span><span>7h às 12h</span></li>
+        </ul>
+        <p style="margin:12px 0 0">Rua Exemplo, 123, Centro</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="caixa">
+      <div class="painel">
+        <h2>Fale com a gente</h2>
+        <p class="sub">Escreva sua mensagem e ela abre direto no nosso WhatsApp.</p>
+        <label for="nome">Seu nome</label>
+        <input id="nome" type="text" autocomplete="name">
+        <label for="msg">Mensagem</label>
+        <textarea id="msg" rows="4" placeholder="Ex.: Vocês têm entrega?"></textarea>
+        <p><button class="botao" type="button" id="enviar">Enviar pelo WhatsApp</button></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="caixa">© 2026 Mercado Baloque. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+  // TROQUE pelo número do mercado: 55 (Brasil) + DDD + número, só dígitos
+  var NUMERO_WHATSAPP = "5567996032667";
+
+  document.getElementById("enviar").addEventListener("click", function () {
+    var nome = document.getElementById("nome").value.trim();
+    var msg = document.getElementById("msg").value.trim();
+    if (!msg) { alert("Escreva uma mensagem antes de enviar."); return; }
+    var texto = (nome ? "Olá, sou " + nome + ". " : "Olá! ") + msg;
+    window.open("https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(texto), "_blank");
+  });
+</script>
+</body>
+</html>
